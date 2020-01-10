@@ -41,7 +41,6 @@ main h1 {
 
 .item {
   align-items: center;
-  color: #333;
   display: flex;
   font-size: 400%;
   font-weight: 700;
