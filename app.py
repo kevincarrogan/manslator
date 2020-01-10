@@ -71,6 +71,10 @@ def get_context_data(man, woman, perm=False):
         woman=slugify(woman),
     )
 
+    title = "Manslator"
+    if perm:
+        title = f"Manslator - {man} is {woman}"
+
     return {
         "man": man,
         "woman": woman,
