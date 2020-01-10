@@ -1,9 +1,11 @@
 translations = [
     ('Man', 'Girl'),
-    ('Boss', 'Girlboss'),
     ('Legend', 'Slut'),
     ('Angry', 'On her period'),
-    ('Taking charge', 'Bossy'),
+    ('Boss', 'Girl boss'),
+    ('Leader', 'Bossy'),
     ('Has a job and family', 'Wants it all'),
     ('Passionate', 'Aggressive'),
+    ('Opinionated', 'Shrill'),
+    ('Candidate', 'Female candidate'),
 ]
