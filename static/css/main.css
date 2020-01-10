@@ -12,6 +12,15 @@ body {
   padding: 0;
 }
 
+a {
+  color: #1ca3ea;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #1ca3ea;
+}
+
 header {
   font-size: 200%;
   text-align: center;
@@ -36,7 +45,7 @@ main h1 {
   font-size: 400%;
   font-weight: 700;
   flex: 1;
-  padding: 256px 64px;
+  padding: 128px 64px;
 }
 
 .man {
@@ -51,4 +60,13 @@ main h1 {
   font-family: 'Nunito', sans-serif;
   justify-content: flex-start;
   text-align: left;
+}
+
+nav {
+  font-size: 150%;
+  text-align: center;
+}
+
+footer {
+
 }
