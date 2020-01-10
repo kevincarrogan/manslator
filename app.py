@@ -39,7 +39,7 @@ def slugify(string):
 routes = {}
 
 for man, woman in translations:
-    routes[(man, woman)] = (man, woman)
+    routes[(slugify(man), slugify(woman))] = (man, woman)
 
 
 cache = {}
