@@ -8,8 +8,6 @@ import gevent.monkey
 
 from gevent.pywsgi import WSGIServer
 
-gevent.monkey.patch_all()
-
 from pystache.loader import Loader
 from pystache import render
 
@@ -22,9 +20,12 @@ from translations import translations
 
 
 app = Flask(__name__)
-# Compress(app)
-GOOGLE_CSP_POLICY["style-src"] += " cdnjs.cloudflare.com"
-# Talisman(app, content_security_policy=GOOGLE_CSP_POLICY)
+
+if not app.debug:
+    gevent.monkey.patch_all()
+    Compress(app)
+    GOOGLE_CSP_POLICY["style-src"] += " cdnjs.cloudflare.com"
+    Talisman(app, content_security_policy=GOOGLE_CSP_POLICY)
 
 loader = Loader()
 
