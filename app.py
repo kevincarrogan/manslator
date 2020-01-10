@@ -76,6 +76,7 @@ def get_context_data(man, woman, perm=False):
         "woman": woman,
         "permalink": permalink,
         "perm": perm,
+        "description": "Are you confused with how to talk to and about women? Here is your helpful manslator.",
     }
 
 
