@@ -14,7 +14,6 @@ from pystache import render
 from flask import Flask, abort, url_for
 
 from flask_compress import Compress
-from flask_talisman import Talisman, GOOGLE_CSP_POLICY
 
 from translations import translations
 
@@ -24,8 +23,6 @@ app = Flask(__name__)
 if not app.debug:
     gevent.monkey.patch_all()
     Compress(app)
-    GOOGLE_CSP_POLICY["style-src"] += " cdnjs.cloudflare.com"
-    Talisman(app, content_security_policy=GOOGLE_CSP_POLICY)
 
 loader = Loader()
 
