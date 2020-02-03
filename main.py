@@ -13,8 +13,6 @@ from pystache import render
 
 from flask import Flask, abort, url_for
 
-from flask_compress import Compress
-
 from translations import translations
 
 
@@ -22,7 +20,6 @@ app = Flask(__name__)
 
 if not app.debug:
     gevent.monkey.patch_all()
-    Compress(app)
 
 loader = Loader()
 
