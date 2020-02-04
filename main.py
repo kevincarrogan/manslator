@@ -64,4 +64,4 @@ routes = [
     Mount('/static', StaticFiles(directory='static')),
 ]
 
-app = Starlette(debug=True, routes=routes)
+app = Starlette(routes=routes)
