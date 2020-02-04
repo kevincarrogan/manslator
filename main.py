@@ -8,17 +8,15 @@ from starlette.templating import Jinja2Templates
 
 from translations import translations
 
-templates = Jinja2Templates(directory='templates')
+templates = Jinja2Templates(directory="templates")
+
 
 def slugify(string):
     return string.lower().replace(" ", "-")
 
+
 def get_context_data(request, man, woman, perm=False):
-    permalink = request.url_for(
-        "permalink",
-        man=slugify(man),
-        woman=slugify(woman),
-    )
+    permalink = request.url_for("permalink", man=slugify(man), woman=slugify(woman),)
 
     title = "Manslator"
     if perm:
@@ -34,38 +32,40 @@ def get_context_data(request, man, woman, perm=False):
         "request": request,
     }
 
+
 valid_routes = {}
 for man, woman in translations:
     valid_routes[(slugify(man), slugify(woman))] = (man, woman)
 
+
 def permalink(request):
-    man = request.path_params['man']
-    woman = request.path_params['woman']
+    man = request.path_params["man"]
+    woman = request.path_params["woman"]
 
     try:
         translation = valid_routes[(man, woman)]
     except KeyError:
-        return Response('Not found', status_code=404)
+        return Response("Not found", status_code=404)
     else:
         man, woman = translation
 
         return templates.TemplateResponse(
-            'translation.html',
-            get_context_data(request, man, woman),
+            "translation.html", get_context_data(request, man, woman),
         )
+
 
 def home(request):
     man, woman = random.choice(translations)
 
     return templates.TemplateResponse(
-        'translation.html',
-        get_context_data(request, man, woman),
+        "translation.html", get_context_data(request, man, woman),
     )
 
+
 routes = [
-    Route('/', home),
-    Route('/{man}-is-{woman}/', permalink),
-    Mount('/static', StaticFiles(directory='static')),
+    Route("/", home),
+    Route("/{man}-is-{woman}/", permalink),
+    Mount("/static", StaticFiles(directory="static")),
 ]
 
 app = Starlette(routes=routes)
