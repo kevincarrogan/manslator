@@ -34,12 +34,16 @@ def get_context_data(request, man, woman, perm=False):
         "request": request,
     }
 
+valid_routes = {}
+for man, woman in translations:
+    valid_routes[(slugify(man), slugify(woman))] = (man, woman)
+
 def permalink(request):
     man = request.path_params['man']
     woman = request.path_params['woman']
 
     try:
-        translation = routes[(man, woman)]
+        translation = valid_routes[(man, woman)]
     except KeyError:
         return Response('Not found', status_code=404)
     else:
