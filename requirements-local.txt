@@ -1,0 +1,7 @@
+-r requirements-prod.txt
+starlette==0.13.5
+uvicorn==0.11.7
+ipython
+ipdb
+black
+pre-commit
