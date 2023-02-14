@@ -1,5 +1,5 @@
 -r requirements-prod.txt
-starlette==0.13.5
+starlette==0.25.0
 uvicorn==0.11.7
 ipython
 ipdb
